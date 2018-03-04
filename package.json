@@ -1,0 +1,11 @@
+{
+  "name": "FirstDiscordBot",
+  "version": "0.0.1",
+  "description": "My first Discord bot. yay",
+  "main": "bot.js",
+  "author": "Alex Wieser",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "winston": "^2.4.0"
+  }
+}

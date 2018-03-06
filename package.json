@@ -4,7 +4,14 @@
   "description": "My first Discord bot. yay",
   "main": "bot.js",
   "author": "Alex Wieser",
+  "scripts": {
+    "run": "node bot.js"
+  },
   "dependencies": {
     "discord.js": "^11.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }

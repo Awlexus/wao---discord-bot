@@ -6,7 +6,8 @@
   "author": "Alex Wieser",
   "scripts": {
     "build": "babel src -d lib",
-    "start": "npm run build && node lib/bot.js"
+    "dev": "npm run build && node lib/bot.js",
+    "start": "node lib/bot.js"
   },
   "dependencies": {
     "discord.js": "^11.3.1",

@@ -1,15 +1,21 @@
-const Discord = require('discord.js')
+// imports
+import Discord from "discord.js"
+import config from "./config"
+import {commands} from "./commands"
+
 const client = new Discord.Client()
-const auth = require('./auth')
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`)
 })
 
 client.on('message', msg => {
-	if (msg.content === 'ping') {
-		msg.reply('pong')
-	}
+	commands.some(([condition, action]) => {
+		if (condition(msg)) {
+			action(msg)
+			return true
+		}
+	})
 })
 
-client.login(auth.token)
+client.login(config.token)

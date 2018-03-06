@@ -5,7 +5,8 @@
   "main": "bot.js",
   "author": "Alex Wieser",
   "scripts": {
-    "run": "node bot.js"
+    "run": "node bot.js",
+    "start": "npm run"
   },
   "dependencies": {
     "discord.js": "^11.3.1",

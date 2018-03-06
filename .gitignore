@@ -113,5 +113,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-config.json
+src/config.json
 package-lock.json

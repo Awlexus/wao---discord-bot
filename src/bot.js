@@ -1,7 +1,7 @@
 // imports
 import Discord from "discord.js"
-import config from "./config"
 import {commands} from "./commands"
+import config from "../src/config"
 
 const client = new Discord.Client()
 

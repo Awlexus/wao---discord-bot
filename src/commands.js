@@ -1,7 +1,7 @@
 import utils from './Utils'
 import DataBase from 'nedb'
 
-const thisers = new DataBase({filename: './db/thisers.db', autoload: true})
+const thisers = new DataBase({filename: '../db/thisers.db', autoload: true})
 
 function findUser (db, user, callback) {
 	db.findOne({uid: user.id}, (err, user) =>callback(user))

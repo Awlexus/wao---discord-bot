@@ -1,4 +1,4 @@
-import config from "./config"
+import config from "../src/config"
 
 function isEmpty (str) {
 	return (!str || 0 === str.length)

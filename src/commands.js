@@ -1,17 +1,15 @@
 import utils from './Utils'
-import DataBase from 'nedb'
+import Firebase from 'firebase'
 
-const thisers = new DataBase({filename: '../db/thisers.db', autoload: true})
 
-function findUser (db, user, callback) {
-	db.findOne({uid: user.id}, (err, user) =>callback(user))
+function findUser (user, callback) {
+	Firebase.database().ref('users').child(user.id).once('value').then(snapshot => {
+		callback(snapshot.val())
+	})
 }
 
-function insertUser (db, user, fields) {
-	let doc = fields ? fields(user) : {}
-	doc['uid'] = user.id
-
-	db.insert(doc)
+function insertPermission (user, name, callback) {
+	Firebase.database().ref('users/').child(user.id).child(name).set(true).then(err => callback(err))
 }
 
 
@@ -41,11 +39,16 @@ export const commands = [
 
 		let usertext = isAuthor ? 'Your are' : user.username + 'is'
 
-		findUser(thisers, user, match => {
+		findUser(user, match => {
 			if (match) {
 				msg.channel.send(`${usertext} can already use ^`)
 			} else {
-				insertUser(thisers, user)
+				insertPermission(user, 'thiser', err => {
+					if (err) {
+						console.log(err)
+						msg.channel.send('something went wrong ;_;')
+					}
+				})
 				msg.channel.send(`${usertext} can now use ^`)
 			}
 		})
@@ -53,7 +56,7 @@ export const commands = [
 	}],
 	[msg => utils.messageWithPrefix(msg) && !utils.afterPrefix(msg), msg => msg.reply('You called?')],
 	[msg => utils.messageStartsWith(msg, '^'), msg => {
-		findUser(thisers, msg.author, match => {
+		findUser(msg.author, match => {
 			if (match)
 				utils.agreed(msg)
 		})

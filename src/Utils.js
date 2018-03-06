@@ -24,7 +24,7 @@ function sendFile (channel, filenames, msg) {
  * @param msg
  */
 const agreed = msg => {
-	sendFile(msg.channel, ['./this.jpg'], msg.member.displayName + " agrees!")
+	sendFile(msg.channel, ['./assets/this.jpg'], msg.member.displayName + " agrees!")
 	console.log('Agreed!')
 }
 const cistartsWith = (text, search) => text.toLowerCase().startsWith(search.toLowerCase())

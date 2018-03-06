@@ -113,5 +113,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-src/config.json
+# Because I can't start without my configs ;_;
+# src/config.json
 package-lock.json

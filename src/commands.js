@@ -33,15 +33,15 @@ export const commands = [
 		}
 
 		let users = msg.mentions.users
-
-		const user = users.length ? users.first() : msg.author
+		console.log(users.size)
+		const user = users.size ? users.first() : msg.author
 		const isAuthor = msg.author === user
 
-		let usertext = isAuthor ? 'Your are' : user.username + 'is'
+		let username = isAuthor ? 'You' : user.username
 
 		findUser(user, match => {
 			if (match) {
-				msg.channel.send(`${usertext} can already use ^`)
+				msg.channel.send(`${username} can already use ^`)
 			} else {
 				insertPermission(user, 'thiser', err => {
 					if (err) {
@@ -49,7 +49,7 @@ export const commands = [
 						msg.channel.send('something went wrong ;_;')
 					}
 				})
-				msg.channel.send(`${usertext} can now use ^`)
+				msg.channel.send(`${username} can now use ^`)
 			}
 		})
 

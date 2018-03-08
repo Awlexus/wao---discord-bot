@@ -17,6 +17,7 @@ export const commands = [
 	[msg => utils.fromBot(msg), msg => msg.channel.send('Ayy bitch, nobody allowed you to call me!')],
 	[msg => utils.containsCommand(msg, 'ping'), msg => msg.channel.send('pong')],
 	[msg => utils.containsCommand(msg, 'shrug'), msg => msg.channel.send('¯\\_(ツ)_/¯')],
+	[msg => utils.containsCommand(msg, 'wafucry'), msg => utils.wafucry(msg)],
 	[msg => utils.containsCommand(msg, 'tag'), msg => msg.reply(`Your tag is ${msg.author.tag}`)],
 	[msg => utils.containsCommand(msg, 'username'), msg => msg.reply(`Your username is ${msg.author.username}`)],
 	[msg => utils.containsCommand(msg, 'displayName'), msg => msg.reply(`Your displayName is ${msg.author.displayName}`)],
@@ -33,7 +34,6 @@ export const commands = [
 		}
 
 		let users = msg.mentions.users
-		console.log(users.size)
 		const user = users.size ? users.first() : msg.author
 		const isAuthor = msg.author === user
 
@@ -55,10 +55,8 @@ export const commands = [
 
 	}],
 	[msg => utils.messageWithPrefix(msg) && !utils.afterPrefix(msg), msg => msg.reply('You called?')],
+
 	[msg => utils.messageStartsWith(msg, '^'), msg => {
-		findUser(msg.author, match => {
-			if (match)
-				utils.agreed(msg)
-		})
+		utils.agreed(msg)
 	}]
 ]

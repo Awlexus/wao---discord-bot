@@ -27,6 +27,11 @@ const agreed = msg => {
 	sendFile(msg.channel, ['./assets/this.jpg'], msg.member.displayName + " agrees!")
 	console.log('Agreed!')
 }
+const wafucry = msg => {
+	sendFile(msg.channel, ['./assets/wafucry.jpg'], msg.member.displayName + " agrees!")
+	console.log(`${msg.member.displayName} made Wafu cry in ${msg.channel}`)
+}
+
 const cistartsWith = (text, search) => text.toLowerCase().startsWith(search.toLowerCase())
 const messageStartsWith = (msg, text) => cistartsWith(msg.content, text)
 const messageWithPrefix = msg => messageStartsWith(msg, config.prefix)
@@ -38,6 +43,7 @@ const fromBot = msg => msg.author.bot && messageWithPrefix(msg)
 export default {
 	sendFile,
 	agreed,
+	wafucry,
 	messageStartsWith,
 	messageWithPrefix,
 	afterPrefix,

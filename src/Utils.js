@@ -28,7 +28,7 @@ const agreed = msg => {
 	console.log('Agreed!')
 }
 const wafucry = msg => {
-	sendFile(msg.channel, ['./assets/wafucry.jpg'])
+	sendFile(msg.channel, ['./assets/wafucry.gif'])
 	console.log(`${msg.member.displayName} made Wafu cry in ${msg.channel}`)
 }
 

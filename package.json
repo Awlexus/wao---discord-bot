@@ -6,7 +6,7 @@
   "author": "Alex Wieser",
   "scripts": {
     "build": "babel src -d lib",
-    "dev": "npm run build && node lib/bot.js",
+    "dev": "npm run build && heroku local",
     "start": "node lib/bot.js"
   },
   "dependencies": {

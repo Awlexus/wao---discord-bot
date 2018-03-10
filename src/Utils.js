@@ -1,4 +1,4 @@
-import config from "../src/config"
+const prefix = process.env.BOT_PREFIX
 
 function isEmpty (str) {
 	return (!str || 0 === str.length)
@@ -34,11 +34,12 @@ const wafucry = msg => {
 
 const cistartsWith = (text, search) => text.toLowerCase().startsWith(search.toLowerCase())
 const messageStartsWith = (msg, text) => cistartsWith(msg.content, text)
-const messageWithPrefix = msg => messageStartsWith(msg, config.prefix)
-const afterPrefix = msg => msg.content.substring(config.prefix.length).trim()
+const messageWithPrefix = msg => messageStartsWith(msg, prefix)
+const afterPrefix = msg => msg.content.substring(prefix.length).trim()
 const containsCommand = (msg, text) => !msg.author.bot && messageWithPrefix(msg) && cistartsWith(afterPrefix(msg), text)
 const fromBot = msg => msg.author.bot && messageWithPrefix(msg)
 
+// const
 
 export default {
 	sendFile,

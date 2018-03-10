@@ -1,24 +1,12 @@
 // imports
 import Discord from "discord.js"
 import {commands} from "./commands"
-import config from "../src/config"
 import Firebase from "firebase"
-/*
-var express = require('express')
-var app = express()
-var server = require('http').createServer(app)
-var io = require('socket.io')(server)
 
-app.get('/', function (req, res, next) {
-	res.send('Fuck you, Heroku')
-})
-
-server.listen(process.env.PORT || 5000)
-*/
 Firebase.initializeApp({
-	apiKey: "apiKeyAIzaSyBQJ21osUTMhYwg2LPNejwaeFdxLBO_ibI",
-	authDomain: "wao-bot.firebaseapp.com",
-	databaseURL: "https://wao-bot.firebaseio.com/",
+	apiKey: process.env.FIREBASE_APIKEY,
+	authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+	databaseURL: process.env.FIREBASE_DATABASE_URL,
 })
 
 const client = new Discord.Client()
@@ -36,4 +24,4 @@ client.on('message', msg => {
 	})
 })
 
-client.login(config.token)
+client.login(process.env.BOT_TOKEN)

@@ -1,6 +1,8 @@
-import emoticons from 'emoticon-data/emoticons'
+import emoticon_data from 'emoticon-data/emoticons'
+import custom_emoticons from '../custom_emojis'
 
 const prefix = process.env.BOT_PREFIX
+const emoticons = emoticon_data['emoticons'].concat(custom_emoticons)
 
 function isEmpty (str) {
 	return (!str || 0 === str.length)
@@ -46,14 +48,15 @@ function hasThisImage (msg) {
 }
 
 function randomEmoticonWithTag (searchTag) {
+	const rand = arr => arr[Math.floor(Math.random() * arr.length)]
+
 	searchTag = searchTag.trim().toLowerCase()
 	if (!searchTag)
-		return `**Usage:** ${prefix}rei <tag>`
-
-	const emoticonsWithTag = emoticons['emoticons']
+		return rand(emoticons)
+	const withTag = emoticons
 		.filter(emoticon => emoticon['tags'].find(tag => tag.indexOf(searchTag) !== -1))
 		.map(emoticon => emoticon['string'])
-	return emoticonsWithTag.length !== 0 ? emoticonsWithTag[Math.floor(Math.random() * emoticonsWithTag.length)] : `No emoticon with the tag "${searchTag}" found`
+	return withTag.length !== 0 ? rand(withTag) : `No emoticon with the tag "${searchTag}" found`
 }
 
 /**

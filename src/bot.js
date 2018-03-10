@@ -16,12 +16,13 @@ client.on('ready', () => {
 })
 
 client.on('message', msg => {
-	commands.some(([condition, action]) => {
-		if (condition(msg)) {
-			action(msg)
-			return true
-		}
-	})
+	if (msg.author !== client.user)
+		commands.some(([condition, action]) => {
+			if (condition(msg)) {
+				action(msg)
+				return true
+			}
+		})
 })
 
 client.login(process.env.BOT_TOKEN)

@@ -49,8 +49,7 @@ export const commands = [
 		})
 
 	}],
-	[msg => utils.messageWithPrefix(msg) && !utils.afterPrefix(msg), msg => msg.reply('You called?')],
-
+	[msg => utils.messageWithPrefix(msg) && !utils.afterPrefix(msg), msg => msg.reply('soup')],
 	[msg => utils.messageStartsWith(msg, '^'), msg => utils.agreed(msg)
 	]
 ]

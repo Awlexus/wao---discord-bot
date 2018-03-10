@@ -1,3 +1,5 @@
+import emoticons from 'emoticon-data/emoticons'
+
 const prefix = process.env.BOT_PREFIX
 
 function isEmpty (str) {
@@ -43,6 +45,13 @@ function hasThisImage (msg) {
 	})
 }
 
+function randomEmoticonWithTag (searchTag) {
+	const emoticonsWithTag = emoticons['emoticons']
+		.filter(emoticon => emoticon['tags'].find(tag => tag.indexOf(searchTag) !== -1))
+		.map(emoticon => emoticon['string'])
+	return emoticonsWithTag.length !== 0 ? emoticonsWithTag[Math.floor(Math.random() * emoticonsWithTag.length)] : `No emoticon with the tag "${searchTag}" found`
+}
+
 /**
  * Case insensitive version of startsWith
  * @param text
@@ -66,12 +75,16 @@ const messageStartsWith = (msg, text) => cistartsWith(msg.content, text)
  */
 const messageWithPrefix = msg => messageStartsWith(msg, prefix)
 
+const trimmedOffset = (text, offset) => text.substring(isNaN(offset) ? offset.length : offset).trim()
+
 /**
  * Returns the text after the prefix
  * @param msg
  * @returns {string}
  */
-const afterPrefix = msg => msg.content.substring(prefix.length).trim()
+const afterPrefix = msg => trimmedOffset(msg.content, prefix)
+
+const afterCommand = (msg, command) => trimmedOffset(afterPrefix(msg), command)
 
 /**
  * Checks whether the starts with the prefix followed by the specified command (Case insensitive)
@@ -95,11 +108,13 @@ function getImageCanvas (image) {
 export default {
 	sendFile,
 	agreed,
+	randomEmoticonWithTag,
 	wafucry,
 	hasThisImage,
 	messageStartsWith,
 	messageWithPrefix,
 	afterPrefix,
+	afterCommand,
 	containsCommand,
 	fromBot
 }

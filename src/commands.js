@@ -23,13 +23,6 @@ export const commands = [
 	[msg => utils.containsCommand(msg, 'tag'), msg => msg.reply(`Your tag is ${msg.author.tag}`)],
 	[msg => utils.containsCommand(msg, 'username'), msg => msg.reply(`Your username is ${msg.author.username}`)],
 	[msg => utils.containsCommand(msg, 'displayName'), msg => msg.reply(`Your displayName is ${msg.author.displayName}`)],
-	[msg => utils.containsCommand(msg, 'mention'), msg => {
-		const mentions = msg.mentions.members
-		if (mentions.size > 0)
-			msg.channel.send(`Mentioned people ${mentions.array()}`)
-		else
-			msg.channel.send('You mentioned nobody')
-	}],
 	[msg => utils.containsCommand(msg, 'thiser'), msg => {
 		if (msg.author.id !== '205980900247207936') {
 			msg.reply('you are not my boss')

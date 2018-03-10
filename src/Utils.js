@@ -46,6 +46,10 @@ function hasThisImage (msg) {
 }
 
 function randomEmoticonWithTag (searchTag) {
+	searchTag = searchTag.trim().toLowerCase()
+	if (!searchTag)
+		return `**Usage:** ${prefix}rei <tag>`
+
 	const emoticonsWithTag = emoticons['emoticons']
 		.filter(emoticon => emoticon['tags'].find(tag => tag.indexOf(searchTag) !== -1))
 		.map(emoticon => emoticon['string'])

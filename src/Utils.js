@@ -23,6 +23,10 @@ function sendFile (channel, filenames, msg) {
 	channel.send(msg, options)
 }
 
+function splitOnFirstWord(text) {
+	return text.trim().split(' ', 1)[0]
+}
+
 /**
  * Agree with the person
  * @param msg
@@ -123,5 +127,6 @@ export default {
 	afterPrefix,
 	afterCommand,
 	containsCommand,
-	fromBot
+	fromBot,
+	splitOnFirstWord
 }

@@ -17,7 +17,7 @@ function insertPermission (user, name, callback) {
  * @param msg
  */
 function sendHelpMenu (msg) {
-	msg.author.send(`
+	msg.author.send(`All commands are case insensitive and you can even whitespaces between the prefix and the command
 	\`\`\`${prefixed.map(item => `${item[3] ? "": process.env.BOT_PREFIX}${item[0]} - ${item[1]}`).join('\n')}
 	\`\`\``)
 }

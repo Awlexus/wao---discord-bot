@@ -44,7 +44,7 @@ const prefixed = [
 	['tag', 'tells you your tag', msg => msg.reply(`Your tag is ${msg.author.tag}`)],
 	['username', 'tells you your username', msg => msg.reply(`Your username is ${msg.author.username}`)],
 	['displayName', 'tells you your displayname', msg => msg.reply(`Your displayName is ${msg.author.displayName}`)],
-	['^', 'tells you your displayname', "", true],
+	['^', 'Agrees with something', "", true],
 ]
 
 export const commands = [
